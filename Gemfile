@@ -43,6 +43,7 @@ group :development, :test do
 
 	gem 'guard-cucumber'
 	gem 'guard-rspec'
+	gem "factory_girl_rails", "~> 4.0"
 end
 
 group :test do
