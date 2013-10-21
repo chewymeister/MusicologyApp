@@ -3,8 +3,7 @@ require 'spec_helper'
 describe Item do
   before  { @item = Item.create(name: "Jon's guitar", 
                             price: 2.45, 
-                            description: "dilapidated")
-          }
+                            description: "dilapidated") }
 
   subject { @item }
 
@@ -22,7 +21,6 @@ describe Item do
 
   context "without a name" do
     before { @item.name = " " }
-
     it " should not be valid" do
       @item.should_not be_valid
     end
@@ -30,7 +28,6 @@ describe Item do
 
   context "without a price" do
     before { @item.price = " " }
-
     it " should not be valid" do
       @item.should_not be_valid
     end
@@ -38,7 +35,6 @@ describe Item do
 
   context "without a description" do
     before { @item.description = " " }
-
     it " should not be valid" do
       @item.should_not be_valid
     end

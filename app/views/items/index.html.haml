@@ -1,2 +1,7 @@
-%h1 Items#index
-%p Find me in app/views/items/index.html.haml
+/ %h1 Items#index
+/ %p Find me in app/views/items/index.html.haml
+
+- @items.each do |item|
+	= link_to item.name, item
+	= item.price
+	= item.description
