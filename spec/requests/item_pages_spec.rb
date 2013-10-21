@@ -1,13 +1,6 @@
 require 'spec_helper'
 
 describe "item pages" do
-	# before { Item.create(	name: "Jon's guitar", 
- #                       	price: 2.45, 
- #                        description: "dilapidated")
-
- #           Item.create(	name: "Srik's piano", 
- #                       	price: 1000.00, 
- #                        description: "pristine") }
 
 	before { 2.times { FactoryGirl.create(:item) } }
 

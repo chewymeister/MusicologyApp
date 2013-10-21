@@ -1,0 +1,29 @@
+.navbar.navbar-fixed-top
+  .container
+    %button.navbar-toggle(type="button" data-toggle="collapse" data-target=".navbar-responsive-collapse")
+      %span.icon-bar
+      %span.icon-bar
+      %span.icon-bar
+    %a.navbar-brand(href="#") MusicologyApp
+    .nav-collapse.collapse.navbar-responsive-collapse
+      %ul.nav.navbar-nav
+        %li= link_to "Link 1", "/path1"
+        %li= link_to "Link 2", "/path2"
+        %li= link_to "Link 3", "/path3"
+        %li= link_to "Link 3", "/path3"
+
+/ .navbar
+/   .navbar-inner
+/     .container
+/       .a(class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse")
+/         %span(class="icon-bar")
+/         %span(class="icon-bar")
+/         %span(class="icon-bar")
+      
+/       <!-- Everything in here gets hidden at 940px or less -->
+/       <div class="nav-collapse">
+/         <!-- menu items gets rendered here instead -->
+/       </div>
+/     </div>
+/   </div>
+/ </div>
