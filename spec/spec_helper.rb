@@ -43,5 +43,7 @@ RSpec.configure do |config|
   #     --seed 1234
   config.order = "random"
 
+  config.include UsersHelper, :type => :request
+
   config.include Capybara::DSL
 end
