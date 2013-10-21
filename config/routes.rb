@@ -1,7 +1,8 @@
 MusicologyApp::Application.routes.draw do
-  get "items/new"
-
+  
   root 'items#index'
+  
+  devise_for :users, :controllers => {:registrations => 'registrations'}
 
   resources :items, only: [:index, :show]
 
