@@ -1,10 +1,9 @@
 require 'spec_helper'
 
 describe 'basket' do
-	before do
-		2.times { FactoryGirl.create(:item) }
-		visit root_path
-	end
+
+	let!(:item) { FactoryGirl.create(:item) }
+	before { visit root_path }
 
 	context 'when visiting the site for the first time' do 
 		it 'should initialise' do
@@ -14,9 +13,11 @@ describe 'basket' do
 
 	context 'when an item is added' do
 		it 'should have increased by one' do
-			within '.item:last' do
+			
+			within '.item' do
 				click_button 'Add item to basket'
 			end
+
 			expect(page).to have_css '.item_count', text: '1 item'
 		end
 	end

@@ -11,7 +11,7 @@ class ApplicationController < ActionController::Base
   end
 
   def current_basket
-  	Basket.find session[:basket_id]
+  	Basket.find(session[:basket_id])
   end
 
 end

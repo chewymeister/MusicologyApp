@@ -11,3 +11,7 @@
       =  item.price
     .description
       = item.description
+
+    = form_for current_basket do |f|
+      = hidden_field_tag(:item_id, item.id)
+      = f.submit "Add item to basket"
