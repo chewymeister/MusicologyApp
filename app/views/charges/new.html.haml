@@ -1,3 +1,26 @@
+%h2
+  Please confirm your details
+
+- if current_user.addresses
+  .address
+    %h3
+      Address
+    = @address.addressee
+    = @address.lineOne
+    = @address.lineTwo
+    = @address.town
+    = @address.county
+    = @address.postcode
+
+- if current_user
+  .email
+    %h3
+      Email
+    = current_user.email
+
+.email
+  = current_user.email
+
 = form_tag charges_path do
   %article
     %label(class="amount")
