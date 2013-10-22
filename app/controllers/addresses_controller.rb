@@ -1,9 +1,9 @@
 class AddressesController < ApplicationController
 
 	def create
+    current_user.remove_address 
 		@address = Address.new(address_params)
     if @address.save
-      current_user.add_new_address(@address)
       redirect_to new_charge_path
       flash[:notice] = "Your address has been updated!"
     else
@@ -15,6 +15,6 @@ class AddressesController < ApplicationController
 	private
     def address_params
       params.require(:address).permit(:addressee, :lineOne, :lineTwo,
-                                   :town, :county, :postcode, :user_id)
+                                   :town, :county, :postcode, :user_id, :current_address)
     end
 end

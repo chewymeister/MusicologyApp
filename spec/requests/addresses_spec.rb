@@ -12,17 +12,18 @@ describe "addresses" do
 			visit root_path
 			sign_in(user)
 			click_button "Add item to basket"
-			click_link 'view basket'
 		end
 
 		context "for the first time" do
+			before { visit new_charge_path }
+
 			it { should have_content "Add address" }
 
 			it "on the checkout page" do
 				fill_in "Addressee", with: "James"
 				fill_in "Address line one", with: "Makers Academy"
-				fill_in "town", with: "London"
-				fill_in "postcode", with: "EC1Y, 1AA"
+				fill_in "Town", with: "London"
+				fill_in "Postcode", with: "EC1Y, 1AA"
 				click_button "Add address"
 
 				expect(page).to have_content "Your address has been updated"
@@ -34,14 +35,17 @@ describe "addresses" do
 		end
 
 		context "after the first time" do
-			let!(:address) { FactoryGirl.create(:address, user: user)}
+			let!(:address) { FactoryGirl.create(:address, user: user, current_address: true) }
+
+			before { visit new_charge_path }
+
 			it { should have_content "Want us to send it to a different address?" }
 
 			it "on the checkout page" do
 				fill_in "Addressee", with: "Srik"
 				fill_in "Address line one", with: "The castle"
-				fill_in "town", with: "Edinburgh"
-				fill_in "postcode", with: "EC1Y, 1BB"
+				fill_in "Town", with: "Edinburgh"
+				fill_in "Postcode", with: "EC1Y, 1BB"
 				click_button "Add address"
 
 				expect(page).to have_content "Your address has been updated"

@@ -5,9 +5,14 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
   has_many :addresses
-  has_one :current_address
 
-  def add_new_address(address)
-    current_address_id = address.id
+  def current_address
+  	addresses.select{ |address| address.current_address }.first
+  end
+
+  def remove_address
+    if addresses
+  	  addresses.each { |address| address.update_attribute(:current_address, false) }
+    end
   end
 end

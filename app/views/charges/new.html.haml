@@ -1,7 +1,7 @@
 %h2
   Please confirm your details
 
-- if current_user.current_address_id
+- if current_user.addresses.count > 0
   .address
     %h3
       Address
