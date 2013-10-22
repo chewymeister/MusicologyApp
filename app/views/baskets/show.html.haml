@@ -1,0 +1,9 @@
+- @basket.items.each do |item|
+  .item
+    .name
+      = link_to item.name, item
+    .price
+      £
+      =  item.price
+    .description
+      = item.description

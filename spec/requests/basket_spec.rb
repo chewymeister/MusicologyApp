@@ -11,15 +11,30 @@ describe 'basket' do
 		end
 	end
 
-	context 'when an item is added' do
-		it 'should have increased by one' do
-
-			within('.item') {click_button 'Add item to basket'}
-
-			expect(page).to have_css '.item_count', text: '1 item'
+	describe 'adding an item' do
+		context 'when not signed in' do
+			it 'should increase the item count by one' do
+				within('.item') {click_button 'Add item to basket'}
+				expect(page).to have_css '.item_count', text: '1 item'
+			end
 		end
 	end
 
+	describe 'show' do
+		context 'when not signed in' do
+			it 'should display the items' do
+				within('.item') {click_button 'Add item to basket'}
+				click_link 'view basket'
+
+				expect(page).to have_css '.item'
+				expect(page).to have_content 'item1'
+			end
+		end
+	end
+
+	after do
+  	FactoryGirl.reload
+	end
 
 	# context 'should go to checkout' do
 	# 	it 'when checkout button is click' do
