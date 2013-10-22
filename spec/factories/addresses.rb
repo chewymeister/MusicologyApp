@@ -6,6 +6,5 @@ FactoryGirl.define do
     lineOne 	"25 City Road"
     town 			"London"
     postcode 	"EC1Y 1AA"
-    current_address true
   end
 end

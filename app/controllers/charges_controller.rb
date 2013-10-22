@@ -2,7 +2,7 @@ class ChargesController < ApplicationController
 	def new
 		if current_user
 			@address = Address.new
-			@user_address = current_user.current_address
+			@current_address = Address.find(:id)
 			render 'new'
 		else
 			redirect_to new_user_session_path
@@ -32,6 +32,5 @@ class ChargesController < ApplicationController
 		rescue Stripe::CardError => e
 		  flash[:error] = e.message
 		  redirect_to charges_path
-
 	end
 end
