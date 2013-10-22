@@ -1,5 +1,9 @@
 - @items.each do |item|
   .items
-    = link_to item.name, item
-    = item.price
-    = item.description
+    .name
+      = link_to item.name, item
+    .price
+      £
+      =  item.price
+    .description
+      = item.description
