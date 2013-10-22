@@ -8,6 +8,9 @@
             = link_to "Home", root_path
           %li
             = link_to "view basket", basket_path(current_basket)
+          - if current_basket.items.count > 0
+            %li
+              = link_to "Checkout", new_charge_path
           - if signed_in?
             %li(id="fat-menu" class="dropdown")
               %a(class="dropdown-toggle"  data-toggle="dropdown" href="#" )

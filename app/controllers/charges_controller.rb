@@ -1,5 +1,11 @@
 class ChargesController < ApplicationController
 	def new
+		if current_user
+			render 'new'
+		else
+			redirect_to new_user_session_path
+			flash[:error] = "Please sign in to continue"
+		end
 	end
 
 	def create
