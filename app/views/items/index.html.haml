@@ -1,5 +1,6 @@
 #basket
   .item_count
+    = pluralize current_basket.count, 'item'
 
 - @items.each do |item|
   .item
