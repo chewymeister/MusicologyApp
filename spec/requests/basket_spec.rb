@@ -13,10 +13,8 @@ describe 'basket' do
 
 	context 'when an item is added' do
 		it 'should have increased by one' do
-			
-			within '.item' do
-				click_button 'Add item to basket'
-			end
+
+			within('.item') {click_button 'Add item to basket'}
 
 			expect(page).to have_css '.item_count', text: '1 item'
 		end
