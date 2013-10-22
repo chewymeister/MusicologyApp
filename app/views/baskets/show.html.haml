@@ -2,16 +2,14 @@
   .item_count
     = pluralize current_basket.count, 'item'
 
-- @items.each do |item|
+- @basket.items.each do |item|
   .item
     .name
       = link_to item.name, item
     .price
       £
-      =  item.price
+      = item.price
     .description
       = item.description
 
-    = form_for current_basket do |f|
-      = hidden_field_tag(:item_id, item.id)
-      = f.submit "Add item to basket"
+      = link_to "Remove from basket", delete_basket_item_path(item_id: item.id), method: :delete
