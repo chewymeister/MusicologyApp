@@ -15,11 +15,11 @@ class ChargesController < ApplicationController
 	    :customer    => customer.id,
 	    :amount      => @amount,
 	    :description => 'Rails Stripe customer',
-	    :currency    => 'usd'
+	    :currency    => 'gbp'
 	  )
 
 	  redirect_to root_path
-	  flash[:notice] = "Thanks, you paid $5.00!"
+	  flash[:notice] = "Thanks, you paid £5.00!"
 
 		rescue Stripe::CardError => e
 		  flash[:error] = e.message
