@@ -8,6 +8,7 @@ MusicologyApp::Application.routes.draw do
   resources :charges
 
   resources :baskets
+  resources :addresses
 
   match '/delete_basket_item', to: 'baskets#destroy', via: 'delete'
   # The priority is based upon order of creation: first created -> highest priority.

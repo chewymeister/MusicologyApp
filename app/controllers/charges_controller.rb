@@ -1,7 +1,8 @@
 class ChargesController < ApplicationController
 	def new
 		if current_user
-			@address = current_user.current_address
+			@address = Address.new
+			@user_address = current_user.current_address
 			render 'new'
 		else
 			redirect_to new_user_session_path

@@ -1,25 +1,78 @@
 %h2
   Please confirm your details
 
-- if current_user.addresses
+- if current_user.addresses.count > 0
   .address
     %h3
       Address
-    = @address.addressee
-    = @address.lineOne
-    = @address.lineTwo
-    = @address.town
-    = @address.county
-    = @address.postcode
+    = @user_address.addressee
+    = @user_address.lineOne
+    = @user_address.lineTwo
+    = @user_address.town
+    = @user_address.county
+    = @user_address.postcode
+
+- if current_user
+  %h3
+    Want us to send it to a different address?
+
+  = form_for @address do |f|
+    = f.label :addressee
+    = f.text_field :addressee
+
+    = f.label :lineOne, "Address line one"
+    = f.text_field :lineOne
+
+    = f.label :lineTwo, "Address line two"
+    = f.text_field :lineTwo
+
+    = f.label :town
+    = f.text_field :town
+
+    = f.label :county
+    = f.text_field :county
+
+    = f.label :postcode
+    = f.text_field :postcode
+
+    = f.hidden_field :current_address, value: true
+    = f.hidden_field :user_id, value: current_user.id
+
+    = f.submit "Add address"
+
+/ - else
+/   %h3
+/     Add address
+
+/   - form_for @new_address do |f|
+/     = f.label :addressee
+/     = f.text_field :addressee
+
+/     = f.label :lineOne
+/     = f.text_field :lineOne
+
+/     = f.label :lineTwo
+/     = f.text_field :lineTwo
+
+/     = f.label :town
+/     = f.text_field :town
+
+/     = f.label :county
+/     = f.text_field :county
+
+/     = f.label :postcode
+/     = f.text_field :postcode
+
+/     = f.hidden_field :current_address, value:true
+
+/     = f.submit "Add address"
+
 
 - if current_user
   .email
     %h3
       Email
     = current_user.email
-
-.email
-  = current_user.email
 
 = form_tag charges_path do
   %article

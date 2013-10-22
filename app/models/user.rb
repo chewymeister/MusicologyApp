@@ -9,4 +9,8 @@ class User < ActiveRecord::Base
   def current_address
   	addresses.select{ |address| address.current_address }.first
   end
+
+  def remove_current_addresses
+  	addresses.each { |address| address.update_attribute(:current_address, false) }
+  end
 end
