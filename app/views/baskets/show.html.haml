@@ -1,9 +1,15 @@
+#basket
+  .item_count
+    = pluralize current_basket.count, 'item'
+
 - @basket.items.each do |item|
   .item
     .name
       = link_to item.name, item
     .price
       £
-      =  item.price
+      = item.price
     .description
       = item.description
+
+      = link_to "Remove from basket", delete_basket_item_path(item_id: item.id), method: :delete

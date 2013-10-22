@@ -32,6 +32,24 @@ describe 'basket' do
 		end
 	end
 
+	describe 'removing an item' do
+		
+		let!(:item) { FactoryGirl.create(:item) }
+
+		context 'when not signed in' do
+			before do
+				visit root_path
+				within('.item') {click_button 'Add item to basket'}
+				click_link 'view basket'
+			end
+
+			it 'should decrease the item count by 1' do
+				click_link 'Remove from basket'
+				expect(page).to have_css '.item_count', text: '0 items'
+			end
+		end
+	end
+
 	after do
   	FactoryGirl.reload
 	end

@@ -7,6 +7,8 @@ MusicologyApp::Application.routes.draw do
   resources :items, only: [:index, :show]
 
   resources :baskets
+
+  match '/delete_basket_item', to: 'baskets#destroy', via: 'delete'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
