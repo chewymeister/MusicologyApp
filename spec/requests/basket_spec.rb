@@ -53,10 +53,4 @@ describe 'basket' do
 	after do
   	FactoryGirl.reload
 	end
-
-	# context 'should go to checkout' do
-	# 	it 'when checkout button is click' do
-	# 		click_button 'Checkout'
-	# 		expect(page).to have_content 'Place your order'
-	# 	end
 end
