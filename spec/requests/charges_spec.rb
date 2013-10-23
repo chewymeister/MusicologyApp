@@ -8,7 +8,9 @@ describe 'charges' do
 	describe 'new' do
 		before do
 			visit root_path
-			click_button 'Add item to basket'
+			within '.edit_basket' do
+				click_button 'Add item to basket'
+			end
 		end
 
 		context 'when not signed in' do
@@ -31,16 +33,32 @@ describe 'charges' do
 		end
 
 		describe 'checking out' do
+			let!(:item2) { 2.times{ FactoryGirl.create(:item) } }
 			before { sign_in user }
-			it 'should redirect you to checkout page' do
 
+			it 'should redirect you to checkout page' do
+				page.all(:css, '.edit_basket')[1].click_button 'Add item to basket'
 				click_link 'Checkout'
 
 				expect(page).to have_content 'Please confirm your details'
 				expect(page).to have_content 'Address'
 				expect(page).to have_content 'Email'
 			end
+
+			it 'should display the sub total of your basket' do
+				click_link 'Checkout'
+				
+				# raise page.html
+				within '.amount' do
+					expect(page).to have_content 'Sub total: £2.00'
+				end
+			end
 		end
+
+	end
+
+	after do
+  	FactoryGirl.reload
 	end
 end
 
