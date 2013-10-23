@@ -1,12 +1,13 @@
 require 'spec_helper'
 
 describe "item pages" do
-
-	before { 2.times { FactoryGirl.create(:item) } }
+	let!(:item) { FactoryGirl.create(:item) }
+	let!(:item2) { FactoryGirl.create(:item) }
+	# before { 2.times { FactoryGirl.create(:item) } }
 
   subject { page }
 
-  describe "index" do
+  describe 'index' do
   	before { visit root_path }
 
   	context "should display" do
@@ -19,10 +20,24 @@ describe "item pages" do
 	  		expect(page).to have_content 2
 	  		expect(page).to have_content 3
 	  	end
+  	end
+  end
 
-	  	it "descriptions" do
+  describe 'show' do
+  	before { visit item_path(item) }
+
+  	context "should display" do
+
+  		it "name" do
+	  		expect(page).to have_content "item1"
+	  	end
+
+	  	it "price" do
+	  		expect(page).to have_content 2
+	  	end
+
+	  	it "description" do
 	  		expect(page).to have_content "item1 is great"
-	  		expect(page).to have_content "item2 is great"
 	  	end
   	end
   end
