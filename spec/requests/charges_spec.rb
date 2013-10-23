@@ -48,10 +48,17 @@ describe 'charges' do
 			it 'should display the sub total of your basket' do
 				click_link 'Checkout'
 				
-				expect(page).to have_content 'Sub total: £4.00'	
+				# raise page.html
+				within '.amount' do
+					expect(page).to have_content 'Sub total: £2.00'
+				end
 			end
 		end
 
+	end
+
+	after do
+  	FactoryGirl.reload
 	end
 end
 

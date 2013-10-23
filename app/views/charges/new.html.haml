@@ -79,7 +79,8 @@
   %article
     %label(class="amount")
       %span
-        Amount: £5.00
+        =@sub_total
+        
 
   - data_key = "#{ Rails.configuration.stripe[:publishable_key] }"
   %script(src="https://checkout.stripe.com/v2/checkout.js" class="stripe-button"

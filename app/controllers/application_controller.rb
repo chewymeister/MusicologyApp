@@ -14,4 +14,12 @@ class ApplicationController < ActionController::Base
   	Basket.find(session[:basket_id])
   end
 
+  def basket_sub_total
+    basket = current_basket
+    sub_total_array = basket.items.map(&:price)
+    sub_total = sub_total_array.inject{ |sum, n| sum + n }
+  end
+
+  private
+
 end

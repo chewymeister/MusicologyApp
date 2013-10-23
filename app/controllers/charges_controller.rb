@@ -1,5 +1,7 @@
 class ChargesController < ApplicationController
 	def new
+		@sub_total = "Sub total: £#{basket_sub_total}0"
+
 		if current_user
 			@current_address = current_user.current_address
 			@address = Address.new
