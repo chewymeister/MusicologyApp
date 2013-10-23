@@ -8,8 +8,19 @@ describe Item do
   it { should respond_to(:name) }
   it { should respond_to(:price) }
   it { should respond_to(:description) }
+  it { should respond_to(:image) }
+
+  it 'can have attached image' do
+    item = Item.create image: example_image
+    expect(product.image.exists?).to be_true
+  end
+
+  it 'can have an attached thumb' do
+    expect(product.image.exists?(:thumb)).to be_true
+  end
 
   context "with the correct information" do
+
     it "should be valid" do
       item.reload.name.should eq("item1")
       item.reload.price.should eq(2)

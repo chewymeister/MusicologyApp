@@ -42,6 +42,9 @@ gem 'devise'
 
 gem 'stripe', :git => 'https://github.com/stripe/stripe-ruby'
 
+gem "paperclip", "~> 3.0"
+gem 'aws-sdk' 
+
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
   gem 'sdoc', require: false

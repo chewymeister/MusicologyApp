@@ -9,6 +9,10 @@
     .description
       = @item.description
 
+    .image
+      - if @item.image
+        =image_tag @Item.image.url(:thumb) , class = 'item_image'
+
     .add_item_button_container
       = form_for current_basket do |f|
         = hidden_field_tag(:item_id, @item.id)
