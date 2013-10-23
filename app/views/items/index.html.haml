@@ -16,12 +16,14 @@
       .price
         £
         =  item.price
-      / .description
-      /   = item.description
 
       .item_image
-        %a(href="#" class="thumbnail")
-          %img(data-src="holder.js/100%x180" alt="...")
+        - if item.image.exists?
+          %a(href="#" class="thumbnail")
+            = image_tag(item.image.url(:thumb), class: 'item_image')
+        - else
+          %a(href="#" class="thumbnail")
+            %img(data-src="holder.js/100%x180" alt="...")
 
       .add_item_button_container
         = form_for current_basket do |f|

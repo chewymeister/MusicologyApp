@@ -40,6 +40,9 @@ describe "item pages" do
 	  		expect(page).to have_content "item1 is great"
 	  	end
   	end
+
+  	describe 'edit' do
+  	end
   end
 
   after do

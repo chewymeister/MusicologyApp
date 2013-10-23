@@ -10,11 +10,17 @@
       = @item.description
 
     .image
-      - if @item.image
-        = image_tag(@item.image.url(:thumb), class: 'item_image')
+      - if @item.image.exists?
+        %a(href="#" class="thumbnail")
+          = image_tag(@item.image.url(:thumb), class: 'item_image')
+      - else
+        %a(href="#" class="thumbnail")
+          %img(data-src="holder.js/100%x180" alt="...")
 
     .add_item_button_container
       = form_for current_basket do |f|
         = hidden_field_tag(:item_id, @item.id)
         = f.submit "Add item to basket", class: "add_item_button"
+
+    = link_to "Edit", edit_item_path(@item)
 .col-lg-1

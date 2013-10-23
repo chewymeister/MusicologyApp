@@ -9,7 +9,7 @@ class ItemsController < ApplicationController
 	  redirect_to items_path
 
     rescue AWS::S3::Errors::RequestTimeout
-	  flash[:notice] = "Upload tined out"
+	  flash[:notice] = "Upload timed out"
 	  render 'new'
 	end
 
@@ -20,4 +20,29 @@ class ItemsController < ApplicationController
   def show
   	@item = Item.find(params[:id])
   end
+
+  def edit
+  	@item = Item.find(params[:id])
+  end
+
+  def update
+  	@item = Item.find(params[:id])
+
+  	if @item.update(item_params)
+      # flash[:success] = "Profile updated"
+      redirect_to @item
+
+    #   rescue AWS::S3::Errors::RequestTimeout
+	  	# flash[:notice] = "Upload timed out"
+	  	# render 'new'
+    else
+      render 'edit'
+    end
+	end
+
+	private
+
+		def item_params
+			params.require(:item).permit(:name, :price, :description, :image)
+		end
 end
