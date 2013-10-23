@@ -12,3 +12,5 @@
   = f.file_field :image
 
   = f.submit 'Edit item'
+
+= link_to "Delete", @item, data: { confirm: 'Are you sure?' }, method: :delete, id: "delete"

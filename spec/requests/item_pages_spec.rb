@@ -63,6 +63,24 @@ describe "item pages" do
 	  		end
   		end
   	end
+
+  	describe 'destroy' do
+
+  		before do
+  			sign_in user
+  		  visit edit_item_path(item)
+  		end
+
+  		context 'with correct information' do
+
+  			it 'should change the item information' do
+	  			click_link "Delete"
+
+	  			expect(page).to_not have_content "item1"
+	  			expect(page).to_not have_content "item1 is great"
+	  		end
+  		end
+  	end
   end
 
   after do
