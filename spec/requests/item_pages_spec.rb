@@ -3,6 +3,7 @@ require 'spec_helper'
 describe "item pages" do
 	let!(:item) { FactoryGirl.create(:item) }
 	let!(:item2) { FactoryGirl.create(:item) }
+	let(:user) { FactoryGirl.create(:user) }
 	# before { 2.times { FactoryGirl.create(:item) } }
 
   subject { page }
@@ -42,6 +43,25 @@ describe "item pages" do
   	end
 
   	describe 'edit' do
+
+  		before do
+  			sign_in user
+  		  visit edit_item_path(item)
+  		end
+
+  		context 'with correct information' do
+
+  			it 'should change the item information' do
+	  			fill_in "Name", with: "New name"
+	  			fill_in "Price", with: "150.00"
+	  			fill_in "Description", with: "New description"
+	  			click_button "Edit item"
+
+	  			expect(page).to have_content "New name"	  	
+	  			expect(page).to have_content 150.00
+	  			expect(page).to have_content "New description"
+	  		end
+  		end
   	end
   end
 
