@@ -59,6 +59,7 @@ end
 
 group :test do
 	gem 'cucumber-rails', '~> 1.4.0', :require => false
+	gem 'poltergeist'
 end
 
 # Use ActiveModel has_secure_password

@@ -29,8 +29,10 @@ class ChargesController < ApplicationController
 	  redirect_to root_path
 	  flash[:notice] = "Thanks, you paid £5.00!"
 
+	  session[:basket_id] = Basket.create.id
+
 		rescue Stripe::CardError => e
 		  flash[:error] = e.message
-		  redirect_to charges_path
+		  redirect_to new_charge_path
 	end
 end
