@@ -4,7 +4,7 @@ MusicologyApp::Application.routes.draw do
   
   devise_for :users, :controllers => {:registrations => 'registrations'}
 
-  resources :items, only: [:index, :show]
+  resources :items
   resources :charges
 
   resources :baskets

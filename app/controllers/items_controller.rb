@@ -5,12 +5,12 @@ class ItemsController < ApplicationController
 	end
 
 	def create
-	  @item = Item.create(params[:item].permit(:name, :image etc ))
+	  @item = Item.create(params[:item].permit(:name, :image, :price, :description ))
 	  redirect_to items_path
 
     rescue AWS::S3::Errors::RequestTimeout
 	  flash[:notice] = "Upload tined out"
-	  render ''#''
+	  render 'new'
 	end
 
   def index

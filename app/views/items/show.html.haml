@@ -11,7 +11,7 @@
 
     .image
       - if @item.image
-        =image_tag @Item.image.url(:thumb) , class = 'item_image'
+        = image_tag(@item.image.url(:thumb), class: 'item_image')
 
     .add_item_button_container
       = form_for current_basket do |f|

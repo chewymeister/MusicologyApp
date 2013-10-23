@@ -12,11 +12,11 @@ describe Item do
 
   it 'can have attached image' do
     item = Item.create image: example_image
-    expect(product.image.exists?).to be_true
+    expect(item.image.exists?).to be_true
   end
 
   it 'can have an attached thumb' do
-    expect(product.image.exists?(:thumb)).to be_true
+    expect(item.image.exists?(:thumb)).to be_true
   end
 
   context "with the correct information" do
