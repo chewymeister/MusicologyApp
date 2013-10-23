@@ -11,11 +11,14 @@ describe Item do
   it { should respond_to(:image) }
 
   it 'can have attached image' do
-    item = Item.create image: example_image
+    item = Item.create name: "James", price: "0.1", description: "Great hair", image: example_image
+    expect(item).to be_valid
     expect(item.image.exists?).to be_true
   end
 
-  it 'can have an attached thumb' do
+  xit 'can have an attached thumb' do
+    item = Item.create name: "James", price: "0.1", description: "Great hair", image: example_image
+    raise item.inspect
     expect(item.image.exists?(:thumb)).to be_true
   end
 
