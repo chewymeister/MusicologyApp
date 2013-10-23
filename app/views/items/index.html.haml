@@ -4,6 +4,9 @@
       %h2
         = pluralize current_basket.count, 'item'
 
+.pagination.col-lg-12
+  = will_paginate @posts
+
 - @items.each do |item|
   .col-lg-3
     .item
@@ -21,3 +24,6 @@
           = hidden_field_tag(:item_id, item.id)
           = f.submit "Add item to basket", class: "add_item_button"
   .col-lg-1
+
+.pagination.col-lg-12
+  = will_paginate @posts

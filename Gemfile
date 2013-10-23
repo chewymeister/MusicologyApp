@@ -29,6 +29,8 @@ gem 'jbuilder', '~> 1.2'
 
 gem 'haml-rails'
 
+gem 'will_paginate', '~> 3.0'
+
 # Twitter Bootstrap version 3
 gem 'twitter-bootstrap-rails', :git => 'git://github.com/seyhunak/twitter-bootstrap-rails.git', :branch => 'bootstrap3'
 gem "therubyracer"
