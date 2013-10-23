@@ -1,7 +1,41 @@
+.col-lg-12 {
+	margin-top:30px;
+}
+
 .content_container {
 	margin-top: 60px;
 }
 
 .container nav ul li {
-	float:left;
+	float: left;
+}
+
+.item {
+	height: 100%;
+	margin-top:35px;
+}
+
+.col-lg-3 {
+	height: 300px;
+}
+
+.col-lg-11 {
+	height: 300px;
+}
+
+.container {
+	max-width: 1600px;
+}
+
+.add_item_button_container {
+	bottom:0;
+	position:absolute;
+}
+
+.add_item_button {
+	background:none;
+  border:none;
+  box-shadow:none;
+
+  color: black;
 }

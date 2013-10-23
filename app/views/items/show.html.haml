@@ -1,0 +1,16 @@
+.col-lg-11
+  .item
+    %h3
+      .name
+        = @item.name
+    .price
+      £
+      =  @item.price
+    .description
+      = @item.description
+
+    .add_item_button_container
+      = form_for current_basket do |f|
+        = hidden_field_tag(:item_id, @item.id)
+        = f.submit "Add item to basket", class: "add_item_button"
+.col-lg-1

@@ -1,17 +1,23 @@
-#basket
-  .item_count
-    = pluralize current_basket.count, 'item'
+.col-lg-12
+  #basket
+    .item_count
+      %h2
+        = pluralize current_basket.count, 'item'
 
 - @items.each do |item|
-  .item
-    .name
-      = link_to item.name, item
-    .price
-      £
-      =  item.price
-    .description
-      = item.description
+  .col-lg-3
+    .item
+      %h3
+        .name
+          = link_to item.name, item
+      .price
+        £
+        =  item.price
+      / .description
+      /   = item.description
 
-    = form_for current_basket do |f|
-      = hidden_field_tag(:item_id, item.id)
-      = f.submit "Add item to basket"
+      .add_item_button_container
+        = form_for current_basket do |f|
+          = hidden_field_tag(:item_id, item.id)
+          = f.submit "Add item to basket", class: "add_item_button"
+  .col-lg-1

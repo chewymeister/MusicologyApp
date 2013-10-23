@@ -8,10 +8,10 @@ class BasketsController < ApplicationController
 	end
 	
 	def update
+		session[:return_to] ||= request.referer
 		@item = Item.find(params[:item_id])
 		current_basket.items << @item
-
-		redirect_to items_path
+		redirect_to session.delete(:return_to)
 	end
 
 	def destroy

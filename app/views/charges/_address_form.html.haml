@@ -1,0 +1,39 @@
+= form_for @address do |f|
+  %table
+    %tr
+      %td
+        = f.label :addressee
+      %td
+        = f.text_field :addressee
+    %tr
+      %td
+        = f.label :lineOne, "Address line one"
+      %td
+        = f.text_field :lineOne
+    %tr
+      %td
+        = f.label :lineTwo, "Address line two"
+      %td
+        = f.text_field :lineTwo
+    %tr
+      %td
+        = f.label :town
+      %td
+        = f.text_field :town
+    %tr
+      %td
+        = f.label :county
+      %td  
+        = f.text_field :county
+    %tr
+      %td
+        = f.label :postcode
+      %td
+        = f.text_field :postcode
+    %tr
+      %td
+        = f.hidden_field :current_address, value: true
+      %td  
+        = f.hidden_field :user_id, value: current_user.id
+
+  = f.submit "Add address"
