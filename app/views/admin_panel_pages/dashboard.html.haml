@@ -24,10 +24,7 @@
           %a(href="#" class="thumbnail")
             %img(data-src="holder.js/100%x180" alt="...")
 
-      .add_item_button_container
-        = form_for current_basket do |f|
-          = hidden_field_tag(:item_id, item.id)
-          = f.submit "Add item to basket", class: "add_item_button"
+      = link_to 'Edit item', edit_admins_item_path(item)
   .col-lg-1
 
 .pagination.col-lg-12

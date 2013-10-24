@@ -30,7 +30,7 @@ class Admins::ItemsController < ItemsController
 
   	if @item.update(item_params)
       # flash[:success] = "Profile updated"
-      redirect_to @item
+      redirect_to admins_path
 
     #   rescue AWS::S3::Errors::RequestTimeout
 	  	# flash[:notice] = "Upload timed out"
