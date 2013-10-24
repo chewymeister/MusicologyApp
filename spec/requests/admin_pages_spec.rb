@@ -2,6 +2,7 @@ require 'spec_helper'
 
 describe 'admin' do
 	let(:admin) { FactoryGirl.create(:admin) }
+	let!(:item) { FactoryGirl.create(:item) }
 
 	context 'when signed in ' do
 		before { admin_sign_in admin }
@@ -25,7 +26,19 @@ describe 'admin' do
     	expect(page).to have_link 'New item'
     	expect(page).to have_content 25.00
     	expect(page).to have_content 'New description'
-    	# expect(page).to have_content 25.00
+		end
+
+		it 'should be able to edit an item' do
+			click_link 'Edit item'
+			fill_in 'Name', with: 'Edited item'
+			fill_in 'Description', with: 'Edited description'
+			fill_in 'Price', with: '30.00'
+			# raise page.html
+    	click_button 'Edit item'
+
+    	expect(page).to have_link 'Edited item'
+    	expect(page).to have_content 30.00
+    	expect(page).to have_content 'Edited description'
 		end
 	end
 end
