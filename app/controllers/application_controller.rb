@@ -20,6 +20,14 @@ class ApplicationController < ActionController::Base
     sub_total = sub_total_array.inject{ |sum, n| sum + n }
   end
 
+  def after_sign_in_path_for(resource)
+    if resource.class == User
+      root_path
+    elsif resource.class == Admin
+      admins_items_path
+    end
+  end
+
   private
 
 end

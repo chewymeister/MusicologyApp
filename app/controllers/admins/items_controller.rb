@@ -14,7 +14,11 @@ class Admins::ItemsController < ItemsController
 	end
 
 	def index
-		super
+		if current_admin
+			@items = Item.paginate(:page => params[:page], :per_page => 12)
+		else
+			redirect_to new_admin_session_path
+		end
 	end
 
 	def show
