@@ -3,7 +3,7 @@ MusicologyApp::Application.routes.draw do
   root 'items#index'
 
   devise_for :admins, :controller => "admins"
-    get "admins", :to => "admins/items#index"
+    get "admins", :to => "admin_panel_pages#dashboard"
 
   namespace :admins do
     resources :items
@@ -19,6 +19,7 @@ MusicologyApp::Application.routes.draw do
 
   resources :baskets
   resources :addresses
+  resources :admin_panel_pages
 
 
   match '/delete_basket_item', to: 'baskets#destroy', via: 'delete'

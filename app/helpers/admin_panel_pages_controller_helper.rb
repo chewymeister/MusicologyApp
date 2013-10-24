@@ -1,0 +1,2 @@
+module AdminPanelPagesControllerHelper
+end

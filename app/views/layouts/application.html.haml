@@ -19,7 +19,8 @@
 
 
   %body
-    = render 'layouts/header'
+    = render 'layouts/header' unless @disable_nav
+    = render 'layouts/dashboard_header' if @admin_page
     
     .content_container
       .container

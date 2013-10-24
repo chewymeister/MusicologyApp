@@ -24,9 +24,9 @@ class ApplicationController < ActionController::Base
     if resource.class == User
       root_path
     elsif resource.class == Admin
-      admins_items_path
+      admins_path
     end
-  end
+  end 
 
   private
 

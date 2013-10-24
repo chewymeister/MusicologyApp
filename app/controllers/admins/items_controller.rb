@@ -6,19 +6,15 @@ class Admins::ItemsController < ItemsController
 
 	def create
 		@item = Item.create(params[:item].permit(:name, :image, :price, :description ))
-	  redirect_to items_path
+	  redirect_to admins_path
 
     rescue AWS::S3::Errors::RequestTimeout
 	  flash[:notice] = "Upload timed out"
-	  render 'new'	
+	  render 'new'
 	end
 
 	def index
-		if current_admin
-			@items = Item.paginate(:page => params[:page], :per_page => 12)
-		else
-			redirect_to new_admin_session_path
-		end
+		@items = Item.paginate(:page => params[:page], :per_page => 12)	
 	end
 
 	def show
