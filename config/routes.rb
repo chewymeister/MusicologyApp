@@ -1,14 +1,25 @@
 MusicologyApp::Application.routes.draw do
   
   root 'items#index'
+
+  devise_for :admins, :controller => "admins"
+    get "admins", :to => "admins/items#index"
+
+  namespace :admins do
+    resources :items
+  end
   
   devise_for :users, :controllers => {:registrations => 'registrations'}
+    get "sign_in", :to => "devise/sessions#new"
+    get "sign_out", :to => "devise/sessions#destroy"
+    get "sign_up", :to => "devise/registrations#new"
 
-  resources :items
+  resources :items, only: [:show, :index]
   resources :charges
 
   resources :baskets
   resources :addresses
+
 
   match '/delete_basket_item', to: 'baskets#destroy', via: 'delete'
   # The priority is based upon order of creation: first created -> highest priority.

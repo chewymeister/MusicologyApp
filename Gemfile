@@ -45,6 +45,8 @@ gem 'stripe', :git => 'https://github.com/stripe/stripe-ruby'
 gem "paperclip", :git => "git://github.com/thoughtbot/paperclip.git"
 gem 'aws-sdk' 
 
+gem 'activerecord-session_store', github: 'rails/activerecord-session_store'
+
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
   gem 'sdoc', require: false
