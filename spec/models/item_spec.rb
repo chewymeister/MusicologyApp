@@ -16,9 +16,8 @@ describe Item do
     expect(item.image.exists?).to be_true
   end
 
-  xit 'can have an attached thumb' do
+  it 'can have an attached thumb' do
     item = Item.create name: "James", price: "0.1", description: "Great hair", image: example_image
-    raise item.inspect
     expect(item.image.exists?(:thumb)).to be_true
   end
 

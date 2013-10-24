@@ -13,4 +13,4 @@
 
   = f.submit 'Edit item'
 
-= link_to "Delete", @item, data: { confirm: 'Are you sure?' }, method: :delete, id: "delete"
+= link_to "Delete", admins_item_path(@item), data: { confirm: 'Are you sure?' }, method: :delete, id: "delete"

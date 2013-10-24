@@ -51,3 +51,7 @@ RSpec.configure do |config|
   config.include Capybara::DSL
 
 end
+
+def emails
+  ActionMailer::Base.deliveries
+end

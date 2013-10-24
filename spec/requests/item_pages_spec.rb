@@ -43,10 +43,11 @@ describe "item pages" do
   	end
 
   	describe 'edit' do
+      let(:admin) { FactoryGirl.create(:admin) }
 
   		before do
-  			sign_in user
-  		  visit edit_item_path(item)
+  			admin_sign_in(admin)
+  		  visit edit_admins_item_path(item)
   		end
 
   		context 'with correct information' do
@@ -65,10 +66,11 @@ describe "item pages" do
   	end
 
   	describe 'destroy' do
+      let(:admin) { FactoryGirl.create(:admin) }
 
   		before do
-  			sign_in user
-  		  visit edit_item_path(item)
+  			admin_sign_in(admin)
+  		  visit edit_admins_item_path(item)
   		end
 
   		context 'with correct information' do

@@ -14,7 +14,7 @@ class ChargesController < ApplicationController
   
 	def create
 	  # Amount in cents
-	  @amount = 500
+	  @amount = basket_sub_total.to_i
 
 	  customer = Stripe::Customer.create(
 	    :email => 'example@stripe.com',
@@ -29,8 +29,9 @@ class ChargesController < ApplicationController
 	  )
 
 	  redirect_to root_path
-	  flash[:notice] = "Thanks, you paid £5.00!"
-
+	  flash[:notice] = "Thanks, you paid £#{@amount}.00!"
+	  email = current_user.email
+	  Order.create(number_of_items: 3)
 	  session[:basket_id] = Basket.create.id
 
 		rescue Stripe::CardError => e
