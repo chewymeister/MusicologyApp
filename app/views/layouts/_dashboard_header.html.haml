@@ -1,11 +1,11 @@
-%header(class="navbar navbar-fixed-top")
+%header(class="navbar navbar-fixed-top navbar-inverse")
   .navbar-inner
     .container
       = link_to "Musicology", root_path, id: "brand"
       %nav
         %ul(class="nav pull-right")
           %li
-            = link_to "Home", root_path
+            = link_to "View site", root_path
           - if signed_in?
             %li(id="fat-menu" class="dropdown")
               %a(class="dropdown-toggle"  data-toggle="dropdown" href="#" )
