@@ -58,7 +58,7 @@ group :development, :test do
 	gem 'shoulda-matchers'
 	gem 'selenium-webdriver'
 	gem 'database_cleaner'
-
+	gem 'capybara-webkit'
 	gem 'guard-cucumber'
 	gem 'guard-rspec'
 	gem "factory_girl_rails", "~> 4.0"
@@ -66,7 +66,6 @@ end
 
 group :test do
 	gem 'cucumber-rails', '~> 1.4.0', :require => false
-	gem 'poltergeist'
 end
 
 # Use ActiveModel has_secure_password

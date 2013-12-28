@@ -54,6 +54,7 @@ describe Item do
   after do
     FactoryGirl.reload
   end
+end
 
-
+class Foo
 end

@@ -14,7 +14,7 @@ describe 'basket' do
 	describe 'adding an item' do
 		context 'when not signed in' do
 			it 'should increase the item count by one' do
-				within('.item') {click_button 'Add item to basket'}
+				within('.item') { click_button 'Add item to basket' }
 				expect(page).to have_css '.item_count', text: '1 item'
 			end
 		end
@@ -23,7 +23,7 @@ describe 'basket' do
 	describe 'show' do
 		context 'when not signed in' do
 			it 'should display the items' do
-				within('.item') {click_button 'Add item to basket'}
+				within('.item') { click_button 'Add item to basket' }
 				click_link 'view basket'
 
 				expect(page).to have_css '.item'

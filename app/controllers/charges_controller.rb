@@ -14,16 +14,16 @@ class ChargesController < ApplicationController
   
 	def create
 	  # Amount in cents
-	  @amount = basket_sub_total.to_i
-
+	  @amount = basket_sub_total.to_i 
+    Stripe.api_key = ENV["STRIPE_SECRET_KEY"]
 	  customer = Stripe::Customer.create(
 	    :email => 'example@stripe.com',
 	    :card  => params[:stripeToken]
 	  )
-
+    # raise @amount.inspect
 	  charge = Stripe::Charge.create(
 	    :customer    => customer.id,
-	    :amount      => @amount,
+	    :amount      => @amount * 100,
 	    :description => 'Rails Stripe customer',
 	    :currency    => 'gbp'
 	  )
